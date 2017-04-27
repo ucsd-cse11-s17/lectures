@@ -1,0 +1,5 @@
+#!/bin/bash
+
+javac -cp ../tester.jar:. ExamplesRegion.java && \
+  javac -cp ../tester.jar:../javalib.jar:. RegionMain.java && \
+  java -cp ../javalib.jar: RegionMain
