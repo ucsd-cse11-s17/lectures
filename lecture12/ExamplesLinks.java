@@ -1,7 +1,4 @@
-/* An interface to a list of strings.  We will implement
-   this interface so that we never _change_ existing
-   StringLists, only create new ones (this can be useful
-   practically, and will help us out pedagogically). */
+/* An interface to a list of strings. */
 
 interface StringList {
   /* Returns the number of strings in the list */
@@ -14,7 +11,6 @@ interface StringList {
   /* Returns the number of times s appears in the list */
   int count(String s);
 }
-
 class SLLink implements StringList {
   String value;
   StringList rest;
@@ -28,22 +24,17 @@ class SLLink implements StringList {
   }
 
   public boolean contains(String s) {
-
-
-
-
     return false; // FILL
   }
 
   public int count(String s) {
-
-
     return 0; // FILL
   }
-
 }
-
 class SLEmpty implements StringList {
+  SLEmpty() {
+    // does nothing
+  }
   public int length() {
     return 0;
   }
@@ -54,12 +45,10 @@ class SLEmpty implements StringList {
     return 0;
   }
 }
-
-
 class ExamplesLinks {
   StringList s1 = new SLLink("apple", new SLLink("banana", new SLEmpty())); 
   StringList s2 = new SLLink("kiwi", new SLLink("lemon",
-    new SLLink("melon", s1)));
+    new SLLink("melon", new SLEmpty())));
 
   // A: 2  B: 3  C: 4  D: 5  E: 6
   int l1 = this.s1.length();
@@ -84,4 +73,3 @@ class ExamplesLinks {
 
 */
 }
-
