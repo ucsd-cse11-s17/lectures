@@ -1,5 +1,4 @@
 import tester.*;
-
 interface StringListWithMemory {
   /*
     @param String s The string to add
@@ -7,12 +6,6 @@ interface StringListWithMemory {
     existing elements
   */
   void insertAtFront(String s);
-  /*
-    @param String s The string to add
-    EFFECT: after this, the string s appears last in the list, preceded by the
-    existing elements
-  */
-  void insertAtEnd(String s);
   /*
     @param int i The index to add at
     @param String s The string to add
@@ -27,11 +20,9 @@ interface StringListWithMemory {
     the previous value at that index
   */
   void setAt(int i, String s);
-
   int length();
   String getAt(int i);
 }
-
 class StringArrayList implements StringListWithMemory {
   String[] contents;
   StringArrayList() {
@@ -48,36 +39,30 @@ class StringArrayList implements StringListWithMemory {
   }
 
   public String getAt(int index) {
-    // some error checking
+    if(index >= this.contents.length || index < 0) {
+      throw new RuntimeException("Index out of bounds " + index);
+    }
+
     return this.contents[index];
   }
 
 
+  public void insertAt(int index, String s) {
 
 
 
 
 
 
+  }
+  public void setAt(int index, String value) {
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }
+  public int length() { return this.contents.length; }
 }
 
 
@@ -101,6 +86,11 @@ class ExamplesStringList {
 
     t.checkExpect(s.getAt(3), "lemon");
 
+    t.checkException(
+      new RuntimeException("Index out of bounds -1"),
+      s, "getAt", -1);
+
     t.checkExpect(s.getAt(4), "kiwi");
+    return true;
   }
 }
